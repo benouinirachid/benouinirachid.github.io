@@ -5,111 +5,69 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-/* Global styles */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #24292e;
-  background-color: #f6f8fa;
-}
+/* Import Bootstrap */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 
-a {
-  color: #0366d6;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Header styles */
+/* Header styling */
 header {
-  background-color: #24292e;
-  color: #fff;
-  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 header h1 {
-  margin: 0;
+  font-size: 36px;
+  margin-top: 0;
 }
 
-header nav {
-  float: right;
-}
-
-header nav ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-header nav li {
+nav li {
   display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+/* Main content styling */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+section h2 {
+  font-size: 24px;
+}
+
+section ul {
+  list-style-type: disc;
   margin-left: 20px;
 }
 
-header nav li:first-child {
+section li {
+  margin-bottom: 10px;
+}
+
+/* Contact section styling */
+#contact ul {
+  list-style-type: none;
   margin-left: 0;
-}
-
-header nav a {
-  color: #fff;
-}
-
-/* Main content styles */
-main {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  box-shadow: 0 1px 5px rgba(27,31,35,.15);
-}
-
-/* Buttons styles */
-.btn {
-  display: inline-block;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #24292e;
-  background-color: #fff;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.btn:hover {
-  background-color: #f6f8fa;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #0366d6;
-  border-color: #0366d6;
-}
-
-.btn-primary:hover {
-  background-color: #035fc7;
-  border-color: #035fc7;
-}
-
-/* Footer styles */
-footer {
-  margin-top: 20px;
-  padding: 10px;
-  text-align: center;
-  color: #666;
-  font-size: 12px;
 }
 
 /* Media query for small screens */
@@ -117,22 +75,7 @@ footer {
   header h1 {
     font-size: 24px;
   }
-  
-  header nav {
-    float: none;
-    margin-top: 20px;
-  }
-  
-  header nav li {
-    display: block;
-    margin: 0;
-  }
-  
-  main {
-    padding: 10px;
-  }
 }
-
 
   </style>
 </head>
