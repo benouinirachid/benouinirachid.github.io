@@ -1,119 +1,633 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Data Integration Platform</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-/* Import Bootstrap */
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachid Benouini, Ph.D. - Staff Data Scientist & Researcher</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Header styling */
-header {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
 
-header h1 {
-  font-size: 36px;
-  margin-top: 0;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-nav li {
-  display: inline-block;
-  margin-right: 20px;
-}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
 
-nav a:hover {
-  color: #000;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-/* Main content styling */
-main {
-  max-width: 800px;
-  margin: 0 auto;
-}
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-section {
-  margin-bottom: 50px;
-}
+        nav a:hover {
+            color: #4299e1;
+        }
 
-section h2 {
-  font-size: 24px;
-}
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            margin-top: 70px;
+            text-align: center;
+        }
 
-section ul {
-  list-style-type: disc;
-  margin-left: 20px;
-}
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
 
-section li {
-  margin-bottom: 10px;
-}
+        .hero .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
 
-/* Contact section styling */
-#contact ul {
-  list-style-type: none;
-  margin-left: 0;
-}
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-/* Media query for small screens */
-@media (max-width: 576px) {
-  header h1 {
-    font-size: 24px;
-  }
-}
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-  </style>
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-placeholder {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #4299e1;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #4299e1;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #4a5568;
+        }
+
+        .timeline-description ul {
+            margin-left: 1rem;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Education & Certifications */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card, .cert-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover, .cert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card h4, .cert-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution, .cert-card .institution {
+            color: #4299e1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .date, .cert-card .date {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Publications */
+        .publications-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #4299e1;
+        }
+
+        .publication-title {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #2d3748;
+            color: white;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #4299e1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .profile-placeholder {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section background alternation */
+        .bg-light {
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-	<header>
-		<h1>Integration Gate</h1>
-		<nav>
-			<ul>
-				<li><a href="#about">About Us</a></li>
-				<li><a href="#features">Features</a></li>
-				<li><a href="#contact">Contact Us</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section id="about">
-			<h2>About Us</h2>
-			<p>We are a startup that is developing a data analytics platform and data integration processes that uses machine learning and other advanced techniques to automate and streamline the process of data integration. Our platform allows organizations to combine data from multiple sources, ensuring that it is clean, accurate, and ready for analysis. </p>
-		</section>
-		<section id="features">
-			<h2>Features</h2>
-			<ul>
-				<li>Connect to a wide range of data sources, including databases, data lakes, APIs, and more.</li>
-				<li>Use natural language processing and other techniques to understand the data and automatically generate schema mappings and transformations.</li>
-				<li>Provide a user-friendly interface that allows data engineers and data scientists to easily configure and manage the data integration process.</li>
-				<li>Use machine learning algorithms to automatically identify and resolve data quality issues, such as missing values, inconsistent data types, and data duplication.</li>
-				<li>Provide a suite of tools for data profiling, data lineage, and data validation, which would allow organizations to track the data as it moves through the integration pipeline and ensure that it is accurate and ready for analysis.</li>
-			</ul>
-		</section>
-		<section id="contact">
-			<h2>Contact Us</h2>
-			<p>If you're interested in learning more about our data integration platform or have any questions, please feel free to reach out to us:</p>
-			<ul>
-				<li>📱 Phone: xxx-xxx-xxxx</li>
-				<li>📧 Contact me on : https://www.linkedin.com/in/rachid-benouini/</li>
-				<li>📇 Address: Casablanca, Morocco.</li>
-			</ul>
-		</section>
-	</main>
+    <header>
+        <div class="header-content">
+            <div class="logo">Rachid Benouini, Ph.D.</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Rachid Benouini, Ph.D.</h1>
+            <p class="subtitle">Staff Data Scientist & Researcher<br>Machine Learning • Document Understanding • Conversational AI</p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">
+                    <i class="fas fa-user"></i> Learn More
+                </a>
+                <a href="https://scholar.google.com/citations?user=J4fhdysAAAAJ" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-graduation-cap"></i> View Publications
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>Staff Data Scientist & Researcher</h3>
+                    <p>
+                        I am a Staff Data Scientist and researcher specializing in Machine Learning, Document Understanding, and Conversational AI. I earned my Ph.D. in Machine Learning (2021), following an M.S. in Intelligent Systems and Networks (2015) and a B.S. in Computer Science and Mathematics (2013).
+                    </p>
+                    <p>
+                        I have published over 25 peer-reviewed papers in international journals and conferences, with my research cited more than 400 times. My scientific contributions cover visually-rich document understanding, multimodal learning, pattern recognition, moment invariants, and graph-based models.
+                    </p>
+                    <p>
+                        At Leyton CognitX, I have led high-impact projects, building production-ready AI solutions that integrate machine learning, multimodal reasoning, compliance automation, and scalable microservices architectures.
+                    </p>
+                    <p>
+                        My work lies at the intersection of research, innovation, and practice, pushing the boundaries of document AI, conversational agents, and intelligent automation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">JAN 2023 – Present</div>
+                    <div class="timeline-title">STAFF Data Scientist</div>
+                    <div class="timeline-company">Leyton</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Led training sessions on advanced ML techniques, mentoring 15+ team members to enhance their skills and knowledge.</li>
+                            <li>Managed a data science team with a product-focused vision, delivering 4 high-impact projects within last year.</li>
+                            <li>Ensuring that reuse and automation are designed into machine learning products, software packages and libraries.</li>
+                            <li>Established best practices for Data and ML Operations, promoting robust and scalable solutions, leading to a 25% decrease in operational errors.</li>
+                            <li>Developed an Agile Scrum methodology for data science projects, enabling faster iteration and delivery.</li>
+                            <li>Created comprehensive data science workflow and toolkits.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">APR 2021 – DEC 2022</div>
+                    <div class="timeline-title">LEAD Data Scientist</div>
+                    <div class="timeline-company">Leyton</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Managed a data science team with a focus on product development, delivering 5+ successful product implementations within 9 months.</li>
+                            <li>Standardized the tools, methods, and algorithms used by the team, ensuring consistency and quality, which reduced redundancy by 20%.</li>
+                            <li>Curated and maintained data science resources, including code libraries and documentation, to support team efficiency.</li>
+                            <li>Coordinate with different functional teams to implement models and monitor outcomes.</li>
+                            <li>Validate the correctness of ML models and analysis and assess their performance to meet business objectives.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">OCT 2019 – MAR 2021</div>
+                    <div class="timeline-title">Data Scientist</div>
+                    <div class="timeline-company">The Good Data Factory</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Develop data-based machine learning models and algorithms.</li>
+                            <li>Analyze data from multiple angles, looking for trends that highlight problems or opportunities.</li>
+                            <li>Evaluate and validate the performance of ML/AI models using standard techniques and metrics.</li>
+                            <li>Work with client teams to research and implement applied ML solutions to improve user experience, engagement, and revenue.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">OCT 2018 – JUL 2019</div>
+                    <div class="timeline-title">Professor</div>
+                    <div class="timeline-company">Faculty of Sciences and Technology of Fez</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Supervised 20+ undergraduate/graduate students, guiding 5+ projects to successful completion.</li>
+                            <li>Preparing high quality subject and learning support materials.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h4>Ph.D. Computer Science</h4>
+                    <div class="institution">Faculty of Sciences and Technology of Fez</div>
+                    <div class="date">Mar 2021</div>
+                    <p><strong>Thesis:</strong> Pattern Recognition by using Fractional and Integer order Moment Invariants combined with Granular Computing approach.</p>
+                </div>
+
+                <div class="education-card">
+                    <h4>M.S. Computer Science</h4>
+                    <div class="institution">Faculty of Sciences and Technology of Fez</div>
+                    <div class="date">Jun 2015</div>
+                    <p><strong>Thesis:</strong> Ontology based Intelligent E-Learning System for the assessment of learning outcomes.</p>
+                </div>
+
+                <div class="education-card">
+                    <h4>B.S. Computer Science</h4>
+                    <div class="institution">Poly-Disciplinary Faculty of Safi</div>
+                    <div class="date">Jul 2013</div>
+                    <p><strong>Thesis:</strong> Real-time face detection and recognition.</p>
+                </div>
+
+                <div class="cert-card">
+                    <h4>Machine Learning Engineering for Production</h4>
+                    <div class="institution">Deeplearning.ai</div>
+                    <div class="date">2021</div>
+                </div>
+
+                <div class="cert-card">
+                    <h4>Production Machine Learning Systems</h4>
+                    <div class="institution">Google Cloud</div>
+                    <div class="date">2021</div>
+                </div>
+
+                <div class="cert-card">
+                    <h4>Data Science and Big Data Analytics</h4>
+                    <div class="institution">DELL-EMC</div>
+                    <div class="date">2017</div>
+                </div>
+
+                <div class="cert-card">
+                    <h4>Fintech: Foundations & Applications of Financial Technology</h4>
+                    <div class="institution">University of Pennsylvania</div>
+                    <div class="date">2022</div>
+                </div>
+
+                <div class="cert-card">
+                    <h4>Information Systems Auditing, Controls and Assurance</h4>
+                    <div class="institution">Hong Kong University</div>
+                    <div class="date">In Progress</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Selected Publications</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #4a5568;">
+                26 published papers with 400+ citations • 
+                <a href="https://scholar.google.com/citations?user=J4fhdysAAAAJ" target="_blank" style="color: #4299e1; text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> View Full Google Scholar Profile
+                </a>
+            </p>
+            
+            <div class="publications-grid">
+                <div class="publication-item">
+                    <div class="publication-title">LMGDoc: Light Multigranular GNN for Efficient Document Understanding</div>
+                    <div class="publication-authors">Recent publication in document understanding and multimodal learning</div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-title">Fractional-order orthogonal Chebyshev Moments and Moment Invariants for image representation and pattern recognition</div>
+                    <div class="publication-authors">Advanced research in pattern recognition and moment invariants</div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-title">Fast and accurate computation of Racah moment invariants for image classification</div>
+                    <div class="publication-authors">Computational methods for image analysis and classification</div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-title">Fast feature selection algorithm for neighborhood rough set model based on Bucket and Trie structures</div>
+                    <div class="publication-authors">Machine learning and feature selection optimization</div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-title">Visually-Rich Document Understanding: Concepts, Taxonomy and Challenges</div>
+                    <div class="publication-authors">Comprehensive survey on document AI and understanding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title" style="color: white;">Let's Connect</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Interested in collaborating on AI research, discussing machine learning projects, or exploring opportunities in document understanding and conversational AI?
+                </p>
+                <div class="contact-links">
+                    <a href="https://scholar.google.com/citations?user=J4fhdysAAAAJ" target="_blank" class="contact-link">
+                        <i class="fas fa-graduation-cap"></i> Google Scholar
+                    </a>
+                    <a href="https://linkedin.com/in/rachid-benouini" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/benouinirachid" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="mailto:rachid.benouini@example.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
